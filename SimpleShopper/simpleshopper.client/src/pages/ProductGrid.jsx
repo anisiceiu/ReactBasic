@@ -50,6 +50,7 @@ function ProductGrid() {
                     <AgGridReact
                         rowData={rows}
                         columnDefs={colDefs}
+                        pagination={ true}
                     />
                    
                 </div>
