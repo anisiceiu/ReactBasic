@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import AuthProvider from "./AuthProvider";
 import PrivateRoute from "./router/PrivateRoute";
-
+import ProductGrid from './pages/ProductGrid';
 
 function App() {
     
@@ -26,6 +26,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route element={<PrivateRoute />}>
                             <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/products" element={<ProductGrid />} />
                     </Route>
                     </Routes>
                 </AuthProvider>

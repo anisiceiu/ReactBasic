@@ -19,6 +19,7 @@ function Dashboard() {
                   <SecureHeader />
                   <h1>Dashboard</h1>
                   <h3>Welcome! {auth.user?.username}</h3>
+                  
               </div>
           </div>
       </>

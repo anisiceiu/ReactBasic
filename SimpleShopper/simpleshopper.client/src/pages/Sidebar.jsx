@@ -11,6 +11,7 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     const [open, setOpen] = React.useState(true);
@@ -21,41 +22,55 @@ export default function Sidebar() {
 
     return (
         <nav className="sidebar sidebar-b">
-        <List
-            sx={{ width: '100%', maxWidth: 360 }}
-            component="nav"
-            
-        >
-            <ListItemButton>
-                <ListItemIcon>
-                    <SendIcon />
-                </ListItemIcon>
-                <ListItemText primary="Sent mail" />
-            </ListItemButton>
-            <ListItemButton>
-                <ListItemIcon>
-                    <DraftsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Drafts" />
-            </ListItemButton>
-            <ListItemButton onClick={handleClick}>
-                <ListItemIcon>
-                    <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="Inbox" />
-                {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                            <StarBorder />
-                        </ListItemIcon>
-                        <ListItemText primary="Starred" />
-                    </ListItemButton>
-                </List>
-            </Collapse>
-        </List>
+            <List
+                sx={{ width: '100%', maxWidth: 360 }}
+                component="nav"
+
+            >
+                <ListItemButton
+                    key="Dashboard"
+                    component={Link}
+                    to={"/dashboard"}
+                >
+                    <ListItemIcon>
+                        <i className="fa fa-dashboard"></i>
+                    </ListItemIcon>
+                    <ListItemText primary="Dashboard" />
+                </ListItemButton>
+                <ListItemButton
+                    key="Products"
+                    component={Link}
+                    to={"/products"}
+                >
+                    <ListItemIcon>
+                        <i className="fa fa-product-hunt"></i>
+                    </ListItemIcon>
+                    <ListItemText primary="Products" />
+                </ListItemButton>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <DraftsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Drafts" />
+                </ListItemButton>
+                <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Inbox" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="Starred" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
         </nav>
-            );
+    );
 }
